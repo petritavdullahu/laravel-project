@@ -20,14 +20,15 @@ Route::get('/tickets', 'TicketsController@index');
 Route::get('/ticket/{slug?}', 'TicketsController@show');
 Route::get('/ticket/{slug?}/edit','TicketsController@edit');
 Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
+Route::post('/comment', 'CommentsController@newComment');
 
 Route::get('sendemail', function () {
 	$data = array(
     	'name' => "Learning Laravel",
 	);
 	Mail::send('emails.welcome', $data, function ($message) {
-		$message->from('yourEmail@domain.com', 'Learning Laravel');
-		$message->to('yourEmail@domain.com')->subject('Learning Laravel test email');
+		$message->from('info@kselsig.com', 'Learning Laravel');
+		$message->to('petrit@kselsig.com')->subject('Learning Laravel test email');
 	});
 	return "Your email has been sent successfully";
 
